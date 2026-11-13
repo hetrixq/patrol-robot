@@ -1,0 +1,235 @@
+{
+  "configById": {
+    "3D!patrolmap": {
+      "cameraState": {
+        "perspective": false,
+        "distance": 13,
+        "phi": 0.6,
+        "thetaOffset": 0,
+        "targetOffset": [
+          0,
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "targetOrientation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "fovy": 45,
+        "near": 0.01,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "followTf": "map",
+      "topics": {
+        "/map": {
+          "visible": true
+        },
+        "/scan": {
+          "visible": true
+        },
+        "/patrol/markers": {
+          "visible": true
+        },
+        "/goal": {
+          "visible": true
+        }
+      },
+      "checkedKeys": [
+        "name:Topics",
+        "t:/map",
+        "t:/scan",
+        "t:/patrol/markers",
+        "t:/goal"
+      ],
+      "expandedKeys": [
+        "name:Topics"
+      ],
+      "scene": {
+        "enableStats": false,
+        "transforms": {
+          "showLabel": false,
+          "editable": false
+        },
+        "ignoreColladaUpAxis": false,
+        "meshUpAxis": "z_up"
+      },
+      "transforms": {},
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "pointTopic": "/clicked_point",
+        "poseTopic": "/move_base_simple/goal",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "clickToPublishPointTopic": "/clicked_point",
+      "clickToPublishPoseTopic": "/move_base_simple/goal",
+      "clickToPublishPoseEstimateTopic": "/initialpose",
+      "autoSyncCameraState": false
+    },
+    "RawMessages!patrol_state": {
+      "topicPath": "/patrol/state",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "RawMessages!patrol_stats": {
+      "topicPath": "/patrol/stats",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "RawMessages!patrol_events": {
+      "topicPath": "/patrol/events",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "RawMessages!patrol_detector": {
+      "topicPath": "/leg_detection/status",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "Publish!patrol_start": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "START",
+      "buttonTooltip": "PATROL: start",
+      "buttonColor": "#17864C",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"start\"\n}"
+    },
+    "Publish!patrol_stop": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "STOP",
+      "buttonTooltip": "PATROL: stop",
+      "buttonColor": "#C2473B",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"stop\"\n}"
+    },
+    "Publish!patrol_reset": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "RESET",
+      "buttonTooltip": "PATROL: reset",
+      "buttonColor": "#C98917",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"reset\"\n}"
+    },
+    "Publish!patrol_loop": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "LOOP",
+      "buttonTooltip": "PATROL: loop",
+      "buttonColor": "#2683C6",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"loop\"\n}"
+    },
+    "Publish!patrol_random": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "RANDOM",
+      "buttonTooltip": "PATROL: random",
+      "buttonColor": "#7253BE",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"random\"\n}"
+    },
+    "Publish!patrol_undo": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "UNDO",
+      "buttonTooltip": "PATROL: undo",
+      "buttonColor": "#697B90",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"undo\"\n}"
+    },
+    "Publish!patrol_clear": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "CLEAR",
+      "buttonTooltip": "PATROL: clear",
+      "buttonColor": "#637080",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"clear\"\n}"
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "linkedGlobalVariables": [],
+  "playbackConfig": {
+    "speed": 1,
+    "messageOrder": "receiveTime"
+  },
+  "layout": {
+    "direction": "column",
+    "first": {
+      "direction": "row",
+      "first": "3D!patrolmap",
+      "second": {
+        "direction": "column",
+        "first": "RawMessages!patrol_state",
+        "second": {
+          "direction": "column",
+          "first": "RawMessages!patrol_events",
+          "second": {
+            "direction": "row",
+            "first": "RawMessages!patrol_stats",
+            "second": "RawMessages!patrol_detector",
+            "splitPercentage": 55
+          },
+          "splitPercentage": 58
+        },
+        "splitPercentage": 28
+      },
+      "splitPercentage": 68
+    },
+    "second": {
+      "direction": "row",
+      "first": {
+        "direction": "row",
+        "first": {
+          "direction": "row",
+          "first": "Publish!patrol_start",
+          "second": "Publish!patrol_stop",
+          "splitPercentage": 50
+        },
+        "second": {
+          "direction": "row",
+          "first": "Publish!patrol_reset",
+          "second": {
+            "direction": "row",
+            "first": "Publish!patrol_loop",
+            "second": "Publish!patrol_random",
+            "splitPercentage": 50
+          },
+          "splitPercentage": 33
+        },
+        "splitPercentage": 38
+      },
+      "second": {
+        "direction": "row",
+        "first": "Publish!patrol_undo",
+        "second": "Publish!patrol_clear",
+        "splitPercentage": 50
+      },
+      "splitPercentage": 77
+    },
+    "splitPercentage": 81
+  }
+}
