@@ -37,17 +37,13 @@
         },
         "/patrol/markers": {
           "visible": true
-        },
-        "/goal": {
-          "visible": true
         }
       },
       "checkedKeys": [
         "name:Topics",
         "t:/map",
         "t:/scan",
-        "t:/patrol/markers",
-        "t:/goal"
+        "t:/patrol/markers"
       ],
       "expandedKeys": [
         "name:Topics"
@@ -99,7 +95,7 @@
       "showFullMessageForDiff": false
     },
     "RawMessages!patrol_detector": {
-      "topicPath": "/leg_detection/status",
+      "topicPath": "/patrol/person_detected",
       "diffEnabled": false,
       "diffMethod": "custom",
       "diffTopicPath": "",
