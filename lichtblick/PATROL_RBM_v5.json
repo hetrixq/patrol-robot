@@ -94,13 +94,6 @@
       "diffTopicPath": "",
       "showFullMessageForDiff": false
     },
-    "RawMessages!patrol_detector": {
-      "topicPath": "/patrol/person_detected",
-      "diffEnabled": false,
-      "diffMethod": "custom",
-      "diffTopicPath": "",
-      "showFullMessageForDiff": false
-    },
     "Publish!patrol_start": {
       "topicName": "/robot_commands",
       "datatype": "std_msgs/msg/String",
@@ -163,6 +156,66 @@
       "buttonColor": "#637080",
       "advancedView": false,
       "value": "{\n  \"data\": \"clear\"\n}"
+    },
+    "Image!qr_view": {
+      "imageTopic": "/patrol/camera/image/compressed",
+      "imageMode": {
+        "imageTopic": "/patrol/camera/image/compressed"
+      },
+      "cameraState": {},
+      "scene": {},
+      "layers": {},
+      "transforms": {},
+      "topics": {},
+      "customLayers": []
+    },
+    "RawMessages!qr_status": {
+      "topicPath": "/patrol/qr/status",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "RawMessages!qr_value": {
+      "topicPath": "/patrol/qr/value",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "RawMessages!qr_visible": {
+      "topicPath": "/patrol/qr/visible",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showFullMessageForDiff": false
+    },
+    "Publish!patrol_check": {
+      "topicName": "/patrol/manual_check",
+      "datatype": "std_msgs/msg/Bool",
+      "buttonText": "CHECK",
+      "buttonTooltip": "Manual CHECK: request QR; Nav2 must first confirm cancellation",
+      "buttonColor": "#e18f18",
+      "advancedView": false,
+      "value": "{\n  \"data\": true\n}"
+    },
+    "Publish!patrol_camera_on": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "CAMERA ON",
+      "buttonTooltip": "Preview camera and show QR overlay while IDLE/STOPPED",
+      "buttonColor": "#2078a9",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"camera_on\"\n}"
+    },
+    "Publish!patrol_camera_off": {
+      "topicName": "/robot_commands",
+      "datatype": "std_msgs/msg/String",
+      "buttonText": "CAMERA OFF",
+      "buttonTooltip": "Close camera while IDLE/STOPPED",
+      "buttonColor": "#586878",
+      "advancedView": false,
+      "value": "{\n  \"data\": \"camera_off\"\n}"
     }
   },
   "globalVariables": {},
@@ -175,57 +228,82 @@
   "layout": {
     "direction": "column",
     "first": {
-      "direction": "row",
-      "first": "3D!patrolmap",
+      "direction": "column",
+      "first": {
+        "direction": "row",
+        "first": "3D!patrolmap",
+        "second": "Image!qr_view",
+        "splitPercentage": 50
+      },
       "second": {
-        "direction": "column",
-        "first": "RawMessages!patrol_state",
+        "direction": "row",
+        "first": {
+          "direction": "row",
+          "first": "RawMessages!patrol_state",
+          "second": "RawMessages!qr_status",
+          "splitPercentage": 50
+        },
         "second": {
-          "direction": "column",
-          "first": "RawMessages!patrol_events",
+          "direction": "row",
+          "first": "RawMessages!qr_value",
           "second": {
             "direction": "row",
             "first": "RawMessages!patrol_stats",
-            "second": "RawMessages!patrol_detector",
-            "splitPercentage": 55
+            "second": "RawMessages!patrol_events",
+            "splitPercentage": 50
           },
-          "splitPercentage": 58
+          "splitPercentage": 33
         },
-        "splitPercentage": 28
+        "splitPercentage": 40
       },
-      "splitPercentage": 68
+      "splitPercentage": 76
     },
     "second": {
-      "direction": "row",
+      "direction": "column",
       "first": {
         "direction": "row",
         "first": {
           "direction": "row",
           "first": "Publish!patrol_start",
-          "second": "Publish!patrol_stop",
-          "splitPercentage": 50
+          "second": {
+            "direction": "row",
+            "first": "Publish!patrol_stop",
+            "second": "Publish!patrol_check",
+            "splitPercentage": 50
+          },
+          "splitPercentage": 33
         },
         "second": {
           "direction": "row",
           "first": "Publish!patrol_reset",
           "second": {
             "direction": "row",
-            "first": "Publish!patrol_loop",
-            "second": "Publish!patrol_random",
+            "first": "Publish!patrol_camera_on",
+            "second": "Publish!patrol_camera_off",
             "splitPercentage": 50
           },
           "splitPercentage": 33
         },
-        "splitPercentage": 38
+        "splitPercentage": 50
       },
       "second": {
         "direction": "row",
-        "first": "Publish!patrol_undo",
-        "second": "Publish!patrol_clear",
+        "first": {
+          "direction": "row",
+          "first": "Publish!patrol_loop",
+          "second": "Publish!patrol_random",
+          "splitPercentage": 50
+        },
+        "second": {
+          "direction": "row",
+          "first": "Publish!patrol_undo",
+          "second": "Publish!patrol_clear",
+          "splitPercentage": 50
+        },
         "splitPercentage": 50
       },
-      "splitPercentage": 77
+      "splitPercentage": 50
     },
-    "splitPercentage": 81
+    "splitPercentage": 77
   }
 }
